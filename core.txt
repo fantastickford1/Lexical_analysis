@@ -1,0 +1,4 @@
+public _funtion_{
+	i = 45 + 47
+	as = i +78
+}

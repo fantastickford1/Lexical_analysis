@@ -24,7 +24,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String path="D:/Mis documentos/GitHub/Lexical_analysis/JFlexLexicalAnalysis/src/core//lexer.flex";
+        String path="C:/Users/Karlos/Documents/GitHub/Lexical_analysis/JFlexLexicalAnalysis/src/core//lexer.flex";
         lexerGenerater(path);
     }
 

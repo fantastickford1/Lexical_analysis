@@ -3,21 +3,26 @@ import static core.Token.*;
 %%
 %class Lexer
 %type Token
-L = [a-zA-Z_]
+L = [a-z]
+A = [A-Z]
 D = [0-9]
-A=["public","void","main","_funtion_"]
 white=[ ,\n]
 %{
     public String lexeme;
 %}
 %%
+
+<YYINITIAL> public {return PALABRA_RESERVADA;}
+<YYINITIAL> void {return PALABRA_RESERVADA;}
+<YYINITIAL> main {return PALABRA_RESERVADA;}
+<YYINITIAL> _funtion_ {return PALABRA_RESERVADA;}
+<YYINITIAL> String {return PALABRA_RESERVADA}
+
 {white} {/*Ignore*/}
-"//".* { /* ignore */}
+"//".* { /* Ignore */}
 "=" {return ASSIGN;}
 "==" {return EQUALS;}
-{A} {lexeme=yytext(); return PALABRA_RESERVADA;}
-{L}({L}|{D})* {lexeme=yytext(); return IDENTIFICADOR;}
-["]({L}|{D})*["] {lexeme=yytext(); return STRING;}
+({L}|{A}|_)({L}|{D}|{A}|_)* {lexeme=yytext(); return IDENTIFICADOR;}
 [+-]?{D}+ {lexeme=yytext(); return INT;}
 [+-]?{D}+[.]{D}+ {lexeme=yytext(); return FLOAT;}
 "+" {return PLUS;}
