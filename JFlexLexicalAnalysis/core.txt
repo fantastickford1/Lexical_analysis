@@ -1,0 +1,7 @@
+public _funtion_ {
+
+	i = 20
+	a = "Hola"
+	w = 13
+	i = 20*13
+}
