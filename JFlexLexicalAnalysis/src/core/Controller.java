@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -20,12 +21,21 @@ public class Controller implements Initializable {
     private FileReader fr;
     private BufferedReader br;
     private String line;
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    private ArrayList<Token> allToken;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        String path="C:/Users/Karlos/Documents/GitHub/Lexical_analysis/JFlexLexicalAnalysis/src/core//lexer.flex";
-        lexerGenerater(path);
+        allToken = new ArrayList<>();
+        String filePath = null;
+//        try {
+            //filePath = new File("core\\lexer.flex").getCanonicalPath();
+            filePath = "D:/Mis documentos/GitHub/Lexical_analysis/JFlexLexicalAnalysis/src/core//lexer.flex";
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        lexerGenerater(filePath);
     }
 
     public void lexerGenerater(String path){
@@ -98,10 +108,6 @@ public class Controller implements Initializable {
                 case ERROR:
                     result = result + "Error, el simbolo no coincide \n";
                     break;
-                case PALABRA_RESERVADA:
-                    if (token.compareTo(lastToken)==1)
-                        result = result + "Token: "+ token + "\n";
-                    break;
                 case INT:
                     result = result+"Token: " + token + " " + lexer.lexeme + "\n";
                     break;
@@ -114,6 +120,7 @@ public class Controller implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            allToken.add(token);
         }
         result = result + "FIN";
         textArea.setEditable(false);
