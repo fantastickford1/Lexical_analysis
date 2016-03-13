@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Lexical_analysis:jar">
+    <output-path>$PROJECT_DIR$/JFlexLexicalAnalysis/out/artifacts/Lexical_analysis_jar</output-path>
+    <root id="archive" name="Lexical_analysis.jar">
+      <element id="module-output" name="Lexical_analysis" />
+      <element id="dir-copy" path="$PROJECT_DIR$/JFlexLexicalAnalysis/src/core" />
+    </root>
+  </artifact>
+</component>
