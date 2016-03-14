@@ -1,5 +1,6 @@
 package core;
 
+import Parsing.SyntacticAnalysis;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
@@ -23,6 +24,7 @@ public class Controller implements Initializable {
     private String line;
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     private ArrayList<Token> allToken;
+    private SyntacticAnalysis analysis;
 
 
     @Override
@@ -102,7 +104,7 @@ public class Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        allToken.add(token);
         while (token!=null){
             switch (token){
                 case ERROR:
@@ -123,6 +125,8 @@ public class Controller implements Initializable {
             allToken.add(token);
         }
         result = result + "FIN";
+        analysis = new SyntacticAnalysis(allToken);
+        analysis.dcplus();
         textArea.setEditable(false);
         textArea.setText("");
         textArea.appendText(result);

@@ -22,6 +22,7 @@ white=[ ,\n,\t,\b,\r,\a]
 
 {white} {/*Ignore*/}
 "//".* { /* Ignore */}
+";" {return COMA;}
 "=" {return ASSIGN;}
 "==" {return EQUALS;}
 ({L}|{A}|_)({L}|{D}|{A}|_)* {lexeme=yytext(); return IDENTIFICADOR;}
