@@ -33,7 +33,7 @@ public class Controller implements Initializable {
         String filePath = null;
 //        try {
             //filePath = new File("core\\lexer.flex").getCanonicalPath();
-            filePath = "D:/Mis documentos/GitHub/Lexical_analysis/JFlexLexicalAnalysis/src/core//lexer.flex";
+            filePath = "C:/Users/Karlos/Documents/GitHub/Lexical_analysis/JFlexLexicalAnalysis/src/core//lexer.flex";
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }

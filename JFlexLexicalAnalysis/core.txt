@@ -1,26 +1,7 @@
-public _funtion_ Carlos{
-	
-	var j = 10
-	b = "hola"
-	var c;b = 5
-	var diana = 4; carlos = 7
-	var z;x
-	z= 8
-	x= 1
-	y= x+z
-	y = y + 4
+private _funtion_ Diana{
+	valorFinal = 4 * 400
+	var diana
+	var hj = diana + 4
 }
 
-
-public void main{
-	
-	var aaa = 10
-	b= "hola"
-	var c;b= 5
-	var diana = 4; carlos = 7
-	var z;x
-	z= 8
-	x= 1
-	y= x+z
-	y = y + 4
-}
+var valorFinal

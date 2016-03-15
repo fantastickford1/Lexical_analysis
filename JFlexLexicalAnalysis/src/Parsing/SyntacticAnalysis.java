@@ -17,9 +17,9 @@ public class SyntacticAnalysis {
         this.indice = 0;
     }
 
-    public void dcplus(){ //<DCPlus> -> <Funtion> <DCL> <DCPlus>
-        funtion_main();
+    public void dcplus(){ //<DCPlus> -> <DCL> <FUNTION>
         declaracion();
+        funtion_main();
         System.out.println("Cadena valida");
     }
 
@@ -127,7 +127,7 @@ public class SyntacticAnalysis {
         }
         //VACIO//
     }
-// <RDCL> -> , identificador <RDCL> <ASIG> | Vacio
+// <RDCL> -> ; identificador <RDCL> <ASIG> | Vacio
     private void restoDeclaracion() {
         if (tokens.get(indice) == Token.COMA){
             indice++;
