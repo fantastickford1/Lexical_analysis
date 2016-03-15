@@ -17,11 +17,13 @@ public class SyntacticAnalysis {
         this.indice = 0;
     }
 
-    public void dcplus(){
+    public void dcplus(){ //<DCPlus> -> <Funtion> <DCL> <DCPlus>
         funtion_main();
+        declaracion();
         System.out.println("Cadena valida");
     }
 
+    //<Funtion> -> public funtion identificador { <DCL> } <Funtion> | public void main { <DCL> } <Funtion> | private funtion identificador { <DCL> } <Funtion> | VACIO
     private void funtion_main() {
         if (tokens.get(indice) == Token.RESERVADA_PUBLIC){
             indice++;
@@ -101,12 +103,10 @@ public class SyntacticAnalysis {
                 System.out.println("Se esperaba la palabra reservada _funtion_");
                 System.exit(0);
             }
-        }else{
-            System.out.print("Se esperaba un acceso");
-            System.exit(0);
         }
+        //vacio
     }
-
+// <DCL> -> var identificador <RDCL> <ASIG> <DCL> | identificador <RDCL> <ASIG> <DCL> | Vacio
     private void declaracion() {
         if (tokens.get(indice) == Token.RESERVADA_VAR){
             indice++;
@@ -127,7 +127,7 @@ public class SyntacticAnalysis {
         }
         //VACIO//
     }
-
+// <RDCL> -> , identificador <RDCL> <ASIG> | Vacio
     private void restoDeclaracion() {
         if (tokens.get(indice) == Token.COMA){
             indice++;
@@ -142,9 +142,27 @@ public class SyntacticAnalysis {
         }
         //VACIO
     }
-
+// <ASIG> -> = <DATO> <OPR> <RDCL> | Vacio
     private void asignacion() {
         if (tokens.get(indice) == Token.ASSIGN){
+            indice++;
+            dato();
+            operacion();
+            restoDeclaracion();
+        }
+        //VACIO
+    }
+//<OPR> -> * <DATO> <RDCL>| +  <DATO> <RDCL>| - <DATO> <RDCL>
+    private void operacion() {
+        if (tokens.get(indice) == Token.TIMES){
+            indice++;
+            dato();
+            restoDeclaracion();
+        }else if (tokens.get(indice) == Token.PLUS){
+            indice++;
+            dato();
+            restoDeclaracion();
+        }else if (tokens.get(indice) == Token.MINUS){
             indice++;
             dato();
             restoDeclaracion();
@@ -152,20 +170,25 @@ public class SyntacticAnalysis {
         //VACIO
     }
 
+    // <DATO> -> int <OPR> | string <OPR> | float <OPR>
     private void dato() {
         if (tokens.get(indice) == Token.INT){
             indice++;
+            operacion();
         }else if (tokens.get(indice) == Token.STRING){
             indice++;
+            operacion();
         }else if (tokens.get(indice) == Token.FLOAT){
             indice++;
+            operacion();
+        }else if (tokens.get(indice) == Token.IDENTIFICADOR){
+            indice++;
+            operacion();
         }else {
-            System.out.println("Se esperaba un dato");
+            System.out.println("Se esperaba un dato o identificador");
             System.exit(0);
         }
     }
-
-
 
 
 }

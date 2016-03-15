@@ -1,6 +1,20 @@
-public _funtion_ {
+public _funtion_ Carlos{
 	
-	var a= 10
+	var j = 10
+	b = "hola"
+	var c;b = 5
+	var diana = 4; carlos = 7
+	var z;x
+	z= 8
+	x= 1
+	y= x+z
+	y = y + 4
+}
+
+
+public void main{
+	
+	var aaa = 10
 	b= "hola"
 	var c;b= 5
 	var diana = 4; carlos = 7
